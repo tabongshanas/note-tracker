@@ -1,0 +1,536 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #343F4F;
+  position: relative;
+}
+.body-container .login-header {
+  color: rgba(255, 255, 255, 0.425);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.body-container .dynamic-btn {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  background-color: #caedd7;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-transform: capitalize;
+  padding: 8px 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.body-container .dynamic-btn:hover {
+  opacity: 80%;
+}
+.body-container .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.body-container .form .user-profile {
+  margin-bottom: 40px;
+}
+.body-container .form .user-profile .user-uploaded-profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.body-container .form .user-profile label {
+  text-transform: capitalize;
+  background-color: #caedd7;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-transform: capitalize;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 5px;
+  position: relative;
+  left: -40px;
+}
+.body-container .form .user-profile label:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.body-container .form .form-details {
+  width: 850px;
+}
+.body-container .form .form-details .detail {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+}
+.body-container .form .form-details .error-display {
+  color: rgb(216, 15, 15);
+  text-align: center;
+  font-size: 15px;
+  margin-top: 25px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.body-container .form .form-details .primary-btn {
+  color: #343F4F;
+  text-decoration: none;
+}
+.body-container .form .form-details .fix-stand-register {
+  text-align: center;
+}
+.body-container .form .form-details .fix-stand-register .register-alert {
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 20px;
+}
+.body-container .form .form-details .fix-stand-register .register-alert a {
+  color: #caedd7;
+  cursor: pointer;
+  text-decoration: none;
+}
+.body-container .form .form-details button {
+  width: 100%;
+}
+.body-container .form .form-details #select {
+  padding: 7px 12px;
+  width: 100%;
+  outline: none;
+  caret-color: #343F4F;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 17px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.158);
+  cursor: pointer;
+}
+.body-container .form .form-details #select option {
+  color: #343F4F;
+  cursor: pointer;
+}
+.body-container .form .form-details #select::-moz-placeholder {
+  color: white;
+  font-size: 16px;
+}
+.body-container .form .form-details #select::placeholder {
+  color: white;
+  font-size: 16px;
+}
+.body-container .form .form-details #select:focus {
+  border: 2px solid #caedd7;
+}
+.body-container .alert-container {
+  background-color: rgba(0, 0, 0, 0.699);
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-150%);
+  transition: 0.5s;
+  opacity: 0;
+}
+.body-container .alert-container .alert {
+  background-color: #caedd7;
+  padding: 15px 20px;
+  color: #343F4F;
+  font-size: 17px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  width: 400px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 20px;
+  transition: 0.3s;
+}
+.body-container .alert-container .alert em {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.details {
+  width: 100%;
+}
+.details input {
+  padding: 7px 12px;
+  width: 100%;
+  outline: none;
+  caret-color: #343F4F;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 17px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.158);
+}
+.details input::-moz-placeholder {
+  color: white;
+  font-size: 16px;
+}
+.details input::placeholder {
+  color: white;
+  font-size: 16px;
+}
+.details input:focus {
+  border: 2px solid #caedd7;
+}
+.details:not(:last-child) {
+  margin-right: 20px;
+}
+
+.register-container-btns {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  scale: 0;
+  z-index: 100000;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.register-container-btns .register-header {
+  color: #caedd7;
+  font-weight: 800;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 25px;
+  margin-bottom: 60px;
+}
+.register-container-btns .register-btns {
+  color: #caedd7;
+  background-color: #343F4F;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  padding: 15px 35px;
+  margin: 0 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+.register-container-btns .register-btns:hover {
+  background-color: #caedd7;
+  color: #343F4F;
+}
+
+.dashboard-container {
+  background-color: #343F4F;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 10px 20px;
+}
+.dashboard-container .header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard-container .header-container .user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard-container .header-container .user-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.dashboard-container .header-container .user-info .user-name--purpose {
+  margin-left: 10px;
+}
+.dashboard-container .header-container .user-info .user-name--purpose .name {
+  color: white;
+  text-transform: capitalize;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 800;
+}
+.dashboard-container .header-container .user-info .user-name--purpose .purpose-totla {
+  display: flex;
+}
+.dashboard-container .header-container .user-info .user-name--purpose .purpose-totla .purpose {
+  color: rgba(255, 255, 255, 0.421);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.dashboard-container .header-container .user-info .user-name--purpose .purpose-totla .seperator {
+  color: white;
+  margin: 0 10px;
+  font-weight: 800;
+}
+.dashboard-container .header-container .user-info .user-name--purpose .purpose-totla .total-notes {
+  color: #caedd7;
+  font-weight: 800;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.dashboard-container .header-container .user-btns {
+  background-color: #caedd7;
+  padding: 8px 15px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-weight: 800;
+  font-size: 15px;
+  transition: 0.3s;
+}
+.dashboard-container .header-container .user-btns:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.dashboard-container .header-container .user-btns:not(:last-child) {
+  margin-right: 10px;
+}
+.dashboard-container .horizontal-line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.379);
+  margin: 20px;
+}
+.dashboard-container .mount-header {
+  border: 1px solid white;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+}
+.dashboard-container .mount-header .header--content {
+  color: white;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 10px;
+}
+.dashboard-container .mount-header .header--content:not(:last-child) {
+  border-right: 2px solid white;
+}
+.dashboard-container .mount-header .date {
+  width: 10%;
+}
+.dashboard-container .mount-header .title {
+  width: 20%;
+}
+.dashboard-container .mount-header .note-header-title {
+  width: 55%;
+}
+.dashboard-container .mount-header .setting {
+  width: 15%;
+}
+.dashboard-container .mounting-container {
+  border-left: 1px solid white;
+  width: 100%;
+  overflow-y: scroll;
+}
+.dashboard-container .mounting-container::-webkit-scrollbar {
+  width: 8px;
+}
+.dashboard-container .mounting-container::-webkit-scrollbar-track {
+  background: #caedd7;
+}
+.dashboard-container .mounting-container::-webkit-scrollbar-thumb {
+  background: #343F4F;
+  border-radius: 15px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.dashboard-container .mounting-container::-webkit-scrollbar-thumb:hover {
+  background: white;
+  cursor: grab;
+}
+.dashboard-container .mounting-container .mount-notes .note-container {
+  margin-top: 20px;
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.373);
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-general {
+  padding-left: 10px;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-general:not(:last-child) {
+  border-right: 2px solid white;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-date {
+  color: #caedd7;
+  width: 10%;
+  font-weight: 700;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-title {
+  width: 20%;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  padding-right: 10px;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-content {
+  width: 55%;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  padding-right: 10px;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-setting {
+  width: 15%;
+  color: #caedd7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-setting .edit-icon {
+  transition: 0.2s;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-setting .edit-icon:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-setting .read-icon {
+  margin: 0 25px;
+  transition: 0.2s;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-setting .read-icon:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-setting .delete-icon {
+  transition: 0.2s;
+}
+.dashboard-container .mounting-container .mount-notes .note-container .note-setting .delete-icon:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.create-note-container {
+  background-color: rgba(0, 0, 0, 0.952);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000000;
+  opacity: 0;
+  scale: 0;
+  transition: 0.3s;
+}
+.create-note-container .create-header {
+  text-transform: uppercase;
+  color: #caedd7;
+  font-weight: 800;
+  font-family: sans-serif;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 30px;
+}
+.create-note-container .keeper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.create-note-container .keeper .create-error {
+  color: rgb(228, 18, 18);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 20px;
+}
+.create-note-container .keeper .create-content {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  width: 1000px;
+}
+.create-note-container .keeper .create-content input {
+  color: white;
+  width: 100%;
+  outline: none;
+  padding: 10px 15px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  background-color: rgba(255, 255, 255, 0.234);
+}
+.create-note-container .keeper .create-content input:focus {
+  border: 2px solid #caedd7;
+}
+.create-note-container .keeper .create-content textarea {
+  width: 100%;
+  height: 400px;
+  outline: none;
+  padding: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-top: 10px;
+  color: white;
+  resize: none;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.389);
+  background-color: rgba(255, 255, 255, 0.234);
+}
+.create-note-container .keeper .create-content textarea:focus {
+  border: 2px solid #caedd7;
+}
+.create-note-container .keeper .create-content .create-btn-keeper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.create-note-container .keeper .create-content .create-btn-keeper .note-btn {
+  color: #343F4F;
+  background-color: #caedd7;
+  text-transform: capitalize;
+  padding: 8px 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  transition: 0.3s;
+}
+.create-note-container .keeper .create-content .create-btn-keeper .note-btn:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.create-note-container .keeper .create-content .create-btn-keeper .note-btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.details-container {
+  background-color: #343F4F;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.details-container .detail-header {
+  color: #caedd7;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 30px;
+  margin-top: 50px;
+}
+.details-container .details-note {
+  color: white;
+  margin-top: 50px;
+}
+
+.bring-create-section {
+  opacity: 1;
+  scale: 1;
+}/*# sourceMappingURL=style.css.map */

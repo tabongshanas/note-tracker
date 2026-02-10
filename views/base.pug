@@ -1,0 +1,56 @@
+mixin inputEl(placeholder, type, name)
+    .details 
+        input(type=`${type}` placeholder=`${placeholder}` name=`${name}`)
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel="stylesheet", href='/icons/fontawesome/css/font-awesome.css')
+        link(rel="stylesheet", href="/style/style.css")
+    body    
+        .body-container
+            a.dynamic-btn dashborad
+                
+            form.form(enctype="multipart/form-data")
+                .user-profile 
+                    img.user-uploaded-profile(src='/img/users/default-user.webp', alt='User Profile')
+                    input#photo(type='file' hidden name='image')
+                    label(for='photo') upload
+
+                .form-details
+                    .detail 
+                        +inputEl('Full Name', '', 'fullname')
+                        +inputEl('Email', '', 'email')
+                    .detail 
+                        +inputEl('Phone Number', '', 'phonenumber')
+                        +inputEl('Password', 'password', 'password')
+                    .detail 
+                        //- +inputEl('Gender', '', 'gender')
+                        .details
+                            select#select(name='gender')
+                                option(value='') Gender  
+                                option(value='male') Male  
+                                option(value='female') Female  
+                        +inputEl('Purpose (note for...)', '', 'purpose')
+
+                    .error-display 
+
+                    button.primary-btn#signup-btn Sign up
+
+                    .fix-stand-register
+                        .register-alert Already have an account #[a(href='login') log in]
+
+
+            .alert-container
+                .alert 
+                    p You successfully signed up 
+                    em Welcome 😎
+                
+
+        script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js') 
+        script(type='module' src='/js/signup.js') 

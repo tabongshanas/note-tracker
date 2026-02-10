@@ -1,0 +1,88 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Dashboard || Note Tracker 😎
+
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel="stylesheet", href='/icons/fontawesome/css/font-awesome.css')
+        link(rel="stylesheet", href="/style/style.css")
+    body 
+        .dashboard-container 
+            .header-container 
+                .user-info
+                    img(src='/img/users/default-user.webp', alt='User profile')
+                    .user-name--purpose 
+                        if user
+                            p.name= loggedInUser.fullname
+                            .purpose-totla
+                                p.purpose= loggedInUser.purpose 
+                                p.seperator - 
+                                p.total-notes= totalNote
+
+                        else 
+                            p.name User Name
+                            .purpose-totla
+                                p.purpose purpose 
+                                p.seperator - 
+                                p.total-notes 00
+
+
+                .user-keeper 
+                    button.user-btns.create-note-btn #[i(class='fa fa-plus')] create note
+                    button.user-btns.register--btn  register
+
+            .horizontal-line
+
+            .mount-header 
+                .header--content.date date
+                .header--content.title title
+                .header--content.note-header-title note
+                .header--content.setting settings
+
+            .mounting-container
+
+                .mount-notes 
+                    each note in notes
+                        - const date = new Date(note.createdAt).toLocaleDateString()
+                        .note-container
+                            .note-general.note-date= date
+                            .note-general.note-title= note.title 
+                            .note-general.note-content= note.note
+                            .note-general.note-setting 
+                                .edit-icon 
+                                    i(class='fa fa-edit')
+                                a(href='/details').read-icon
+                                    i(class='fa fa-eye')
+                                .delete-icon 
+                                    i(class='fa fa-trash')
+
+
+
+        .create-note-container 
+            p.create-header creating note
+            
+            .keeper 
+                form#create-note--form.create-content 
+                    input(type="text" placeholder='Title' name='title')
+                    textarea#main--note(name='note' placeholder='Note')
+                    .create-btn-keeper 
+                        .note-btn.cancel-create cancel
+                        button.note-btn.create-btn create
+
+                .create-error
+
+
+        .register-container-btns 
+            p.register-header Choice a register method
+            
+            .register-keeper
+                a.register-btns.signup(href='signup') sign up
+                a.register-btns.login(href='login') log in
+                                
+                    
+
+        script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+        script(src='/js/script.js') 
+            

@@ -1,0 +1,44 @@
+mixin inputEl(placeholder, type, name)
+    .details 
+        input(type=`${type}` placeholder=`${placeholder}` name=`${name}`)
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel="stylesheet", href='/icons/fontawesome/css/font-awesome.css')
+        link(rel="stylesheet", href="/style/style.css")
+    body    
+        .body-container
+            a.dynamic-btn dashborad
+
+            p.login-header Your informations are save with us!
+                
+            form.form(enctype="multipart/form-data")
+                .form-details
+                    .detail 
+                        +inputEl('Email', '', 'email')
+                    .detail 
+                        +inputEl('Password', 'password', 'password')
+                        
+
+                    .error-display 
+
+                    button.primary-btn#signup-btn Log In
+
+                    .fix-stand-register
+                        .register-alert Already have an account #[a(href='signup') sign up]
+
+
+            .alert-container
+                .alert 
+                    p You successfully log in
+                    em Welcome 😎
+                
+
+        script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js') 
+        script(type='module' src='/js/login.js') 

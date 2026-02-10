@@ -1,0 +1,49 @@
+:root {
+    --primary-color: #343F4F;
+    --secondary-color: #caedd7;
+    --secondary-hover-color: #bdd9c7;
+}
+
+.primary-btn {
+    position: relative;
+    background-color: var(--secondary-hover-color);
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 50px;
+    margin-top: 40px;
+    padding: 10px 20px;
+    font-weight: 800;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.primary-btn a {
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 200px;
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.primary-btn::before {
+    content: '';
+    background-color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0);
+    transition: 0.3s;
+    z-index: -1;
+}
+.primary-btn:hover::before {
+    transform: translateX(-100%);
+}
