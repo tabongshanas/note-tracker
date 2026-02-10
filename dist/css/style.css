@@ -28,6 +28,8 @@
   text-transform: capitalize;
   padding: 8px 15px;
   font-weight: 800;
+  text-decoration: none;
+  color: #343F4F;
   cursor: pointer;
 }
 .body-container .dynamic-btn:hover {
