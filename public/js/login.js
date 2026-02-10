@@ -45,7 +45,6 @@ const login = async (data) => {
         console.log(res)
 
     } catch (err) {
-        console.log(err.response.data);
         signupBtn.textContent = 'Sign up';
         errorDisplay.textContent = err.response.data.message;
     }
