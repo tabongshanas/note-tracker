@@ -1,1 +1,23 @@
-p working
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title 
+
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel="stylesheet", href='/icons/fontawesome/css/font-awesome.css')
+        link(rel="stylesheet", href="/style/style.css")
+    body 
+
+        .body-container
+            .home-keeper 
+                .home-container 
+                    p.home-header Welcome to #[span Note Tracker]
+                    em.sub-header Please, choice a method
+                    
+                    .homw-keeper
+                        a.home-btns.signup(href='signup') sign up
+                        a.home-btns.login(href='login') log in
+
+                    p.know-that If you already have an account, click on 'log in'
