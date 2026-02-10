@@ -31,3 +31,9 @@ exports.details = async (req, res) => {
         title: 'Log in || Welcome Back -- Note Tracker 😎',
     });
 }
+
+exports.overview = async (req, res) => {
+    res.status(200).render('overview', {
+        title: 'overview || Welcome -- Note Tracker 😎',
+    });
+}
