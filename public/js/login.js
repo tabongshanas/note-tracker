@@ -9,7 +9,7 @@ const signupBtn = document.getElementById('signup-btn');
 const submitPhoto = document.getElementById('submit-photo');
 
 const showNotify = (res) => {
-    signupBtn.textContent = 'Sign up';
+    signupBtn.textContent = 'Lon In';
     alert.style.transform = 'translateY(0)';
     alertContainer.style.transform = 'translateY(0)';
     alertContainer.style.opacity = '1';
@@ -41,11 +41,8 @@ const login = async (data) => {
         signupBtn.textContent = 'Success';
         // showAlert(alertContainer);
 
-        console.log(res.data.status)
-        console.log(res)
-
     } catch (err) {
-        signupBtn.textContent = 'Sign up';
+        signupBtn.textContent = 'Log In';
         errorDisplay.textContent = err.response.data.message;
     }
 }

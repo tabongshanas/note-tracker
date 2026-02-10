@@ -31,8 +31,6 @@ const sendCookie = (res, token) => {
 
 exports.signup = async (req, res, next) => {
     try {
-        console.log({...req.body})
-        console.log(req.file)
         const checkUser = await User.findOne({ email: req.body.email })
         if (checkUser) {
             return next(new AppError('Sorry, this user already exist, kindly use another email.', 401))
@@ -52,7 +50,6 @@ exports.signup = async (req, res, next) => {
         })
 
     } catch (err) {
-        console.log(err.message)
         return next(new AppError('Please, all fields are required', 401))
     }
 }
