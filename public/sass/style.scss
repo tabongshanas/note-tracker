@@ -208,6 +208,7 @@
         font-size: 17px;
         border-radius: 5px;
         color: white;
+        caret-color: $secondary-color;
         background-color: rgba(255, 255, 255, 0.158);
 
         &::placeholder {
@@ -363,6 +364,7 @@
         display: flex;
         padding: 10px;
         width: 100%;
+        background-color: #435167fe;
 
         .header--content {
             color: white;
@@ -394,6 +396,7 @@
         border-left: 1px solid white;
         width: 100%;
         overflow-y: scroll;
+        overflow-x: hidden;
 
         &::-webkit-scrollbar {
             width: 8px;
@@ -414,14 +417,16 @@
         .mount-notes {
 
             .note-container {
-                margin-top: 20px;
+                // margin-top: 20px;
                 // border: 1px solid orange;
                 display: flex;
-                padding: 10px;
+                padding: 30px 10px;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.373);
 
                 .note-general {
                     padding-left: 10px;
+                    display: flex;
+                    align-items: center;
 
                     &:not(:last-child) {
                         border-right: 2px solid white;
@@ -483,6 +488,10 @@
                             color: red;
                         }
                     }
+                }
+
+                &:nth-child(even) {
+                    background-color: rgba(255, 255, 255, 0.101);
                 }
             }
         } 
@@ -643,7 +652,7 @@
     }
 
     .home-container {
-        border: 1px solid white;
+        // border: 1px solid white;
         width: 700px;
         height: 600px;
         font-family: $little-text-font;
@@ -653,6 +662,11 @@
         position: relative;
         background-color: $primary-color;
         @include flexCenterDir(column);
+
+        img {
+            width: 100px;
+            margin-bottom: 70px;
+        }
     
         // .home-header {
         //     span {
@@ -677,14 +691,14 @@
             .home-btns {
                 text-decoration: none;
                 background-color: $secondary-color;
-                padding: 15px 25px;
+                padding: 10px 25px;
                 width: 300px;
                 border-radius: 50px;
                 text-align: center;
                 color: $primary-color;
                 font-family: $text-font;
                 font-weight: 800;
-                font-size: 18px;
+                font-size: 16px;
                 text-transform: capitalize;
                 transition: 0.3s;
     
@@ -708,6 +722,100 @@
 }
 
 
+
+.note-detail-container {
+    background-color: $primary-color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    z-index: 4000000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+
+    .detail-header {
+        margin-left: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .detail-info {
+            text-transform: capitalize;
+        }
+        .user {
+            color: $secondary-color;
+            font-family: $little-text-font;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        .purpose {
+            color: rgba(255, 255, 255, 0.326);
+            font-family: $text-font;
+            margin-top: 3px;
+            margin-right: 30px;
+        }
+
+        .dir-detail-btn {
+            color: $secondary-color;
+            text-decoration: underline;
+            text-transform: capitalize;
+            font-size: 19px;
+            cursor: pointer;
+        }
+    }
+
+    .horizontal-line {
+        background-color: rgba(255, 255, 255, 0.359);
+        width: 100%;
+        height: 1px;
+        margin: 30px 0;
+        opacity: 50%;
+    }
+    
+    .detail-title-note {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+
+        .detail-title {
+            color: $secondary-color;
+            font-family: $text-font;
+            font-size: 30px;
+            font-weight: 700;
+            text-decoration: underline;
+            letter-spacing: 2px;
+        }
+        .detail-note {
+            margin-top: 30px;
+            color: white;
+            line-height: 25px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .detail-date-keeper {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            
+            .detail-date {
+                color: rgb(130, 130, 130);
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-weight: 600;
+                position: absolute;
+                right: 0;
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+
+
+
 @keyframes rotate {
     from {
         transform: rotate(0deg);
@@ -722,4 +830,9 @@
 .bring-create-section {
     opacity: 1;
     scale: 1;
+}
+
+.bring-note-detail-container {
+    opacity: 1;
+    visibility: visible;
 }

@@ -27,8 +27,8 @@ exports.login = async (req, res) => {
 }
 
 exports.details = async (req, res) => {
-    res.status(200).render('noteDetails', {
-        title: 'Log in || Welcome Back -- Note Tracker 😎',
+    res.status(200).render('note-details', {
+        title: 'Details || Welcome Back -- Note Tracker 😎',
     });
 }
 

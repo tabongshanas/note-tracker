@@ -8,6 +8,14 @@ const registerBtn = document.querySelector('.register--btn');
 const createBtn = document.querySelector('.create-btn');
 const createError = document.querySelector('.create-error');
 const readIcons = document.querySelectorAll('.read-icon');
+const deleteIcons = document.querySelectorAll('.delete-icon');
+const detailsNote = document.querySelector('.details-note');
+
+const detailTitle = document.querySelector('.detail-title');
+const detailNote = document.querySelector('.detail-note');
+const noteDetailContainer = document.querySelector('.note-detail-container');
+const dirDetailBtn = document.querySelector('.dir-detail-btn');
+const detailDate = document.querySelector('.detail-date');
 
 const registerBtns = document.querySelectorAll('.register-btns');
 
@@ -40,23 +48,23 @@ const createNote = async (data) => {
     }
 }
 
-
-const getDetails = async () => {
+const deleteNote = async (data) => {
     try {
         const res = await axios({
-            method: 'GET',
-            url: 'http://127.0.0.1:8080/api/v1/notes/details'
+            method: 'DELETE',
+            url: `http://127.0.0.1:8080/api/v1/notes/delete-note/${data}`
+            
         })
 
-        
-        // createBtn.textContent = 'Create';
-        // createError.style.color = 'green';
-        // createError.textContent = res.request.statusText;
+        if (res.data == '') {
+            window.location.reload(true);
+            window.location.href = '/dashboard';
+        }
+
         console.log(res)
-
-
+        
     } catch (err) {
-        // createError.textContent = err.response.data.message;
+        console.log(err)
     }
 }
 
@@ -98,7 +106,32 @@ createNoteForm.addEventListener('submit', (e) => {
 
 readIcons.forEach(async (readIcon) => {
     readIcon.addEventListener('click', (e) => {
-        console.log(e.currentTarget.parentElement.parentElement.querySelector('.note-content').textContent)
-        getDetails()
+        const note_detail = e.currentTarget.parentElement.parentElement.querySelector('.note-content').textContent;
+        const title_detail = e.currentTarget.parentElement.parentElement.querySelector('.note-title').textContent;
+        const date_detail = e.currentTarget.parentElement.parentElement.querySelector('.note-date').textContent;
+        noteDetailContainer.classList.add('bring-note-detail-container');
+        detailTitle.textContent = title_detail;
+        detailNote.textContent = note_detail;
+        detailDate.textContent = date_detail;
     })
+})
+
+deleteIcons.forEach((deleteIcon) => {
+    deleteIcon.addEventListener('click', (e) => {
+        e.currentTarget.parentElement.parentElement.style.opacity = '60%';
+        e.currentTarget.parentElement.parentElement.style.backgroundColor = 'rgba(0, 0, 0, 0.699)';
+        const choiceDel = confirm('Are you sure you want to delete this note?');
+
+        if (choiceDel) {
+            const data = `${e.currentTarget.parentElement.parentElement.querySelector('.note-title').textContent}`;
+            deleteNote(data);
+        } else {
+            e.currentTarget.parentElement.parentElement.style.opacity = '100%';
+            e.currentTarget.parentElement.parentElement.style.backgroundColor = 'transparent';
+        }
+    })
+})
+
+dirDetailBtn.addEventListener('click', () => {
+    noteDetailContainer.classList.remove('bring-note-detail-container');
 })

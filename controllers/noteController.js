@@ -8,7 +8,6 @@ exports.createNote = async (req, res, next) => {
         return next(new AppError('Sorry, creating a note requires all fields ☺', 401))
     }
 
-    console.log({ ...req.body, user: req.user.id })
     const createdNote = await Note.create({ ...req.body, user: req.user.id });
 
     res.status(201).json({
@@ -43,10 +42,15 @@ exports.getANote = async (req, res) => {
 }
 
 exports.deleteANote = async (req, res) => {
-    await Note.findByIdAndDelete(req.params.id);
+    try {
+        await Note.findOneAndDelete({ title: req.params.title });
 
-    res.status(204).json({
-        status: 'success',
-        data: null
-    })
+        res.status(204).json({
+            status: 'success',
+            data: null
+        })
+
+    } catch (err) {
+        console.log(err)
+    }
 }

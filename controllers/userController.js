@@ -4,6 +4,7 @@ const path = require('path');
 
 const User = require('./../models/userModel');
 const AppError = require('./../utility/AppError');
+const sendMail = require('./../utility/sendMail');
 
 const signjwt = async (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET_STRING, {
@@ -36,6 +37,8 @@ exports.signup = async (req, res, next) => {
             return next(new AppError('Sorry, this user already exist, kindly use another email.', 401))
         }
 
+        await sendMail.sendMail({email: req.body.email});
+
         const user = await User.create({...req.body});
         const token = await signjwt(user._id);
 
@@ -50,7 +53,8 @@ exports.signup = async (req, res, next) => {
         })
 
     } catch (err) {
-        return next(new AppError('Please, all fields are required', 401))
+        console.log(err)
+        return next(new AppError('Please, all fields are required or Network issue, TRY again later.', 400))
     }
 }
 
