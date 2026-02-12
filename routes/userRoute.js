@@ -34,5 +34,6 @@ router.get('/', userController.getAllUser);
 
 router.post('/signup', upload.single('photo'), userController.signup);
 router.post('/login', userController.login);
+router.post('/logout', userController.logout);
 
 module.exports = router;

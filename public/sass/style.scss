@@ -240,6 +240,29 @@
     transition: 0.3s;
     @include flexCenterDir(column);
 
+    .calcel-resgis {
+        color: white;
+        text-decoration: underline;
+        text-transform: capitalize;
+        margin-top: 70px;
+        font-weight: 600;
+        font-family: $little-text-font;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .promt {
+        color: $secondary-color;
+        font-family: $little-text-font;
+        font-weight: 600;
+        font-size: 15px;
+        margin-top: 50px;
+    }
+
     .register-header {
         color: $secondary-color;
         font-weight: 800;
@@ -249,6 +272,25 @@
     }
 
     .register-btns {
+        color: $secondary-color;
+        background-color: $primary-color;
+        font-family: $little-text-font;
+        font-weight: 800;
+        padding: 15px 35px;
+        margin: 0 20px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-transform: capitalize;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $secondary-color;
+            color: $primary-color;
+        }
+    }
+
+    .register-btn {
         color: $secondary-color;
         background-color: $primary-color;
         font-family: $little-text-font;

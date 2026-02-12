@@ -10,6 +10,8 @@ const createError = document.querySelector('.create-error');
 const readIcons = document.querySelectorAll('.read-icon');
 const deleteIcons = document.querySelectorAll('.delete-icon');
 const detailsNote = document.querySelector('.details-note');
+const promt = document.querySelector('.promt');
+const mountingContainer = document.querySelector('.mounting-container');
 
 const detailTitle = document.querySelector('.detail-title');
 const detailNote = document.querySelector('.detail-note');
@@ -17,6 +19,8 @@ const noteDetailContainer = document.querySelector('.note-detail-container');
 const dirDetailBtn = document.querySelector('.dir-detail-btn');
 const detailDate = document.querySelector('.detail-date');
 const userInfoContainer = document.querySelector('.user-info');
+const calcelResgis = document.querySelector('.calcel-resgis');
+const logoutBtn = document.querySelector('.logout');
 
 const registerBtns = document.querySelectorAll('.register-btns');
 
@@ -37,6 +41,7 @@ const createNote = async (data) => {
         createError.textContent = res.request.statusText;
 
         if (res.data.status === 'success') {
+            mountingContainer.scrollTo(0, mountingContainer.scrollHeight)
             window.setTimeout(() => {
                 createNoteContainer.classList.remove('bring-create-section');
                 window.location.reload(true);
@@ -61,11 +66,31 @@ const deleteNote = async (data) => {
             window.location.reload(true);
             window.location.href = '/dashboard';
         }
-
-        console.log(res)
         
     } catch (err) {
         console.log(err)
+    }
+}
+
+const logout = async () => {
+    try {
+        const res = await axios({
+            method: 'POST', 
+            url: 'http://127.0.0.1:8080/api/v1/users/logout'
+        })
+
+        
+        if (res.data.status === 'success') {
+            window.setTimeout(() => {
+                promt.style.display = 'none';
+
+                window.location.reload(true);
+                window.location.href = '/';
+            }, 2000)
+        }
+        
+    } catch (err) {
+        promt.textContent = err.response.data.message;
     }
 }
 
@@ -87,6 +112,7 @@ cancelCreate.addEventListener('click', () => {
 registerBtn.addEventListener('click', () => {
     registerContainerBtns.classList.add('bring-create-section');
 })
+
 registerBtns.forEach((registerBtn) => {
     registerBtn.addEventListener('click', () => {
         window.setTimeout(() => {
@@ -119,16 +145,14 @@ readIcons.forEach(async (readIcon) => {
 
 deleteIcons.forEach((deleteIcon) => {
     deleteIcon.addEventListener('click', (e) => {
-        e.currentTarget.parentElement.parentElement.style.opacity = '60%';
-        e.currentTarget.parentElement.parentElement.style.backgroundColor = 'rgba(0, 0, 0, 0.699)';
         const choiceDel = confirm('Are you sure you want to delete this note?');
-
+        
         if (choiceDel) {
             const data = `${e.currentTarget.parentElement.parentElement.querySelector('.note-title').textContent}`;
+            e.currentTarget.parentElement.parentElement.style.backgroundColor = 'rgba(0, 0, 0, 0.699)';
+            e.currentTarget.parentElement.parentElement.style.opacity = '60%';
+
             deleteNote(data);
-        } else {
-            e.currentTarget.parentElement.parentElement.style.opacity = '100%';
-            e.currentTarget.parentElement.parentElement.style.backgroundColor = 'transparent';
         }
     })
 })
@@ -140,6 +164,15 @@ dirDetailBtn.addEventListener('click', () => {
 
 // ACCOUNT FUNCT
 userInfoContainer.addEventListener('click', () => {
-    console.log('working')
     window.location.href = 'account';
+})
+
+calcelResgis.addEventListener('click', () => {
+    registerContainerBtns.classList.remove('bring-create-section');
+})
+
+logoutBtn.addEventListener('click', () => {
+    promt.textContent = 'logging out...';
+
+    logout();
 })

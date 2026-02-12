@@ -210,6 +210,26 @@
   align-items: center;
   flex-direction: column;
 }
+.register-container-btns .calcel-resgis {
+  color: white;
+  text-decoration: underline;
+  text-transform: capitalize;
+  margin-top: 70px;
+  font-weight: 600;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.register-container-btns .calcel-resgis:hover {
+  text-decoration: none;
+}
+.register-container-btns .promt {
+  color: #caedd7;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 50px;
+}
 .register-container-btns .register-header {
   color: #caedd7;
   font-weight: 800;
@@ -231,6 +251,23 @@
   text-decoration: none;
 }
 .register-container-btns .register-btns:hover {
+  background-color: #caedd7;
+  color: #343F4F;
+}
+.register-container-btns .register-btn {
+  color: #caedd7;
+  background-color: #343F4F;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  padding: 15px 35px;
+  margin: 0 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+.register-container-btns .register-btn:hover {
   background-color: #caedd7;
   color: #343F4F;
 }

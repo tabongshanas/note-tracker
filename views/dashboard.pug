@@ -3,7 +3,7 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Dashboard || Note Tracker 😎
+        title= title
 
         block content
             include _head
@@ -74,11 +74,16 @@ html(lang="en")
 
 
         .register-container-btns 
+
             p.register-header Choice a register method
             
             .register-keeper
-                a.register-btns.signup(href='user/signup') sign up
-                a.register-btns.login(href='user/login') log in
+                a.register-btns.signup(href='signup') sign up
+                a.register-btns.login(href='login') log in
+                a.register-btn.logout log out
+
+            p.promt
+            p.calcel-resgis cancel
 
 
         .note-detail-container

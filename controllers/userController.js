@@ -80,7 +80,7 @@ exports.login = async (req, res) => {
     if (!user || !(await user.compareUserPassword(password))) {
         return res.status(404).json({
             status: 'fail',
-            message: 'Sorry this user does not exist, Invalid email or password'
+            message: 'Sorry invalid input or, Invalid email or password'
         })
     }
 
@@ -94,6 +94,15 @@ exports.login = async (req, res) => {
     })
 
     // console.log(await user.compareUserPassword(password))
+}
+
+exports.logout = async (req, res, next) => {
+    res.cookie('jwt', '');
+
+    res.status(200).json({
+        status: 'success',
+        data: null
+    })
 }
 
 exports.getAllUser = async (req, res) => {
