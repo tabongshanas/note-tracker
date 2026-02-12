@@ -12,12 +12,17 @@ const signjwt = async (id) => {
     })
 }
 
+let cookieOption = {
+    httpOnly: true,
+    maxAge: 10 * 24 * 60 * 60 * 1000
+}
+
+if (process.env.NODE_ENV === 'production') {
+    cookieOption.secure = true
+}
+
 const sendCookie = (res, token) => {
-    res.cookie('jwt', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        maxAge: 10 * 24 * 60 * 60 * 1000
-    })
+    res.cookie('jwt', token, cookieOption)
 }
 
 // const storage = multer.diskStorage({
