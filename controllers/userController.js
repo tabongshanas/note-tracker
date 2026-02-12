@@ -12,16 +12,17 @@ const signjwt = async (id) => {
     })
 }
 
-let cookieOption = {
-    httpOnly: true,
-    maxAge: 10 * 24 * 60 * 60 * 1000
-}
-
-if (process.env.NODE_ENV === 'production') {
-    cookieOption.secure = true
-}
 
 const sendCookie = (res, token) => {
+    let cookieOption = {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        maxAge: 10 * 24 * 60 * 60 * 1000
+    }
+
+    console.log(cookieOption)
+
     res.cookie('jwt', token, cookieOption)
 }
 
