@@ -30,14 +30,22 @@ const sendCookie = (res, token) => {
 //     }
 // })
 
+// const upload = multer({ storage });
+
+// exports.uploadImage = upload;
+
 exports.signup = async (req, res, next) => {
     try {
+        console.log({ ...req.body })
+        console.log(req.file)
+
         const checkUser = await User.findOne({ email: req.body.email })
         if (checkUser) {
-            return next(new AppError('Sorry, this user already exist, kindly use another email.', 401))
+            return next(new AppError('Sorry, this user already exist, kindly use another email.', 400))
         }
 
-        await sendMail.sendMail({email: req.body.email});
+        // sending user a message after signing up
+        // await sendMail.sendMail({email: req.body.email});
 
         const user = await User.create({...req.body});
         const token = await signjwt(user._id);

@@ -8,6 +8,8 @@ const errorDisplay = document.querySelector('.error-display');
 const signupBtn = document.getElementById('signup-btn');
 const submitPhoto = document.getElementById('submit-photo');
 
+const photo = document.getElementById('photo');
+
 const showNotify = (res) => {
     signupBtn.textContent = 'Sign up';
     alert.style.transform = 'translateY(0)';
@@ -58,7 +60,10 @@ form.addEventListener('submit', (e) => {
     errorDisplay.textContent = '';
 
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    let data = Object.fromEntries(formData.entries());
+    data.photo = formData.get('photo').name;
+    console.log(data)
+    console.log(formData.get('photo').name)
 
     signup(data);
 })

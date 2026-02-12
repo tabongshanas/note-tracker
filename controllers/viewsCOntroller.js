@@ -37,3 +37,9 @@ exports.overview = async (req, res) => {
         title: 'overview || Welcome -- Note Tracker 😎',
     });
 }
+
+exports.account = async (req, res) => {
+    res.status(200).render('account', {
+        title: 'User Account Details || Note Tracker 😎',
+    });
+}

@@ -290,6 +290,7 @@
 
         .user-info {
             @include flexCenter();
+            cursor: pointer;
 
             img {
                 width: 100px;
@@ -362,7 +363,7 @@
     .mount-header {
         border: 1px solid white;
         display: flex;
-        padding: 10px;
+        padding: 16px;
         width: 100%;
         background-color: #435167fe;
 
@@ -809,6 +810,37 @@
                 right: 0;
                 font-size: 13px;
             }
+        }
+    }
+}
+
+
+
+.user-details-container {
+
+    .user-detail {
+        display: flex;
+        margin-top: 30px;
+
+        label {
+            color: rgba(255, 255, 255, 0.379);
+            text-transform: uppercase;
+            font-family: $little-text-font;
+            font-size: 17px;
+            border: 1px solid rgba(255, 255, 255, 0.178);
+            width: 500px;
+            margin: 0 10px;
+            padding: 10px 20px;
+        }
+
+        .detail-content {
+            color: white;
+            font-weight: 800;
+            font-size: 16px;
+            font-family: $text-font;
+            padding-top: 5px;
+            margin-left: 30px;
+            text-transform: lowercase;
         }
     }
 }

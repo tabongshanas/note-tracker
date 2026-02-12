@@ -26,6 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 // SERVING STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use("/uploads", express.static("uploads"));
 
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/notes', noteRoute);

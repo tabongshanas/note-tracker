@@ -16,6 +16,7 @@ const detailNote = document.querySelector('.detail-note');
 const noteDetailContainer = document.querySelector('.note-detail-container');
 const dirDetailBtn = document.querySelector('.dir-detail-btn');
 const detailDate = document.querySelector('.detail-date');
+const userInfoContainer = document.querySelector('.user-info');
 
 const registerBtns = document.querySelectorAll('.register-btns');
 
@@ -134,4 +135,11 @@ deleteIcons.forEach((deleteIcon) => {
 
 dirDetailBtn.addEventListener('click', () => {
     noteDetailContainer.classList.remove('bring-note-detail-container');
+})
+
+
+// ACCOUNT FUNCT
+userInfoContainer.addEventListener('click', () => {
+    console.log('working')
+    window.location.href = 'account';
 })

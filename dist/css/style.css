@@ -253,6 +253,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .dashboard-container .header-container .user-info img {
   width: 100px;
@@ -311,7 +312,7 @@
 .dashboard-container .mount-header {
   border: 1px solid white;
   display: flex;
-  padding: 10px;
+  padding: 16px;
   width: 100%;
   background-color: rgba(67, 81, 103, 0.9960784314);
 }
@@ -693,6 +694,30 @@
   position: absolute;
   right: 0;
   font-size: 13px;
+}
+
+.user-details-container .user-detail {
+  display: flex;
+  margin-top: 30px;
+}
+.user-details-container .user-detail label {
+  color: rgba(255, 255, 255, 0.379);
+  text-transform: uppercase;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.178);
+  width: 500px;
+  margin: 0 10px;
+  padding: 10px 20px;
+}
+.user-details-container .user-detail .detail-content {
+  color: white;
+  font-weight: 800;
+  font-size: 16px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding-top: 5px;
+  margin-left: 30px;
+  text-transform: lowercase;
 }
 
 @keyframes rotate {
