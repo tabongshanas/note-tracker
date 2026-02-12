@@ -14,16 +14,13 @@ const signjwt = async (id) => {
 
 
 const sendCookie = (res, token) => {
-    let cookieOption = {
+
+    res.cookie('jwt', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 10 * 24 * 60 * 60 * 1000
-    }
-
-    console.log(cookieOption)
-
-    res.cookie('jwt', token, cookieOption)
+    });
 }
 
 // const storage = multer.diskStorage({
