@@ -41,10 +41,6 @@ const signup = async (data) => {
 
         showNotify(res);
         signupBtn.textContent = 'Success';
-
-        if (res.status == 'success') {
-            cookieStore.set('jwt', res.data.token)
-        }
         // showAlert(alertContainer);
 
     } catch (err) {

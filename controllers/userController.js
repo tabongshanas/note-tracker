@@ -25,6 +25,16 @@ exports.signup = async (req, res, next) => {
     try {
         // console.log({ ...req.body })
 
+        const { fullname, password } = req.body;
+        const hasLetterAfterSpace = /\s[a-zA-Z]/.test(fullname);
+        if (!fullname.includes(' ') || !hasLetterAfterSpace) {
+            return next(new AppError(`Please, you must provide your full name.\n'${fullname}' is not your full name`, 400))
+        }
+
+        if (password.length < 8) {
+            return next(new AppError(`Enter a srongger password of atleast 8 characters.`, 400))
+        }
+
         const checkUser = await User.findOne({ email: req.body.email })
         if (checkUser) {
             return next(new AppError('Sorry, this user already exist, kindly use another email.', 400))
