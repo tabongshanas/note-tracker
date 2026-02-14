@@ -11,7 +11,7 @@ html(lang="en")
         .dashboard-container 
             .header-container 
                 .user-info
-                    img(src='/img/users/default-user.webp', alt='User profile')
+                    img(src=`/img/users/${loggedInUser.photo}`, alt='User profile')
                     .user-name--purpose 
                         if user
                             p.name= loggedInUser.fullname
@@ -52,7 +52,7 @@ html(lang="en")
                             .note-general.note-setting 
                                 .edit-icon 
                                     i(class='fa fa-edit')
-                                .read-icon
+                                a.read-icon(href='/note/details')
                                     i(class='fa fa-eye')
                                 .delete-icon 
                                     i(class='fa fa-trash')
@@ -86,23 +86,23 @@ html(lang="en")
             p.calcel-resgis cancel
 
 
-        .note-detail-container
-            .detail-header  
-                a.dir-detail-btn #[i(class='fa fa-arrow-left')] back
+        //- .note-detail-container
+        //-     .detail-header  
+        //-         a.dir-detail-btn #[i(class='fa fa-arrow-left')] back
 
-                .detail-header-keeper
-                    p.detail-info.user= loggedInUser.fullname
-                    p.detail-info.purpose= loggedInUser.purpose
+        //-         .detail-header-keeper
+        //-             p.detail-info.user= loggedInUser.fullname
+        //-             p.detail-info.purpose= loggedInUser.purpose
 
 
-            .horizontal-line
+        //-     .horizontal-line
 
-            .detail-title-note
-                p.detail-title 
-                p.detail-note
+        //-     .detail-title-note
+        //-         p.detail-title 
+        //-         p.detail-note
                 
-                .detail-date-keeper 
-                    p.detail-date 
+        //-         .detail-date-keeper 
+        //-             p.detail-date 
 
                                 
                     

@@ -41,7 +41,7 @@ exports.getANote = async (req, res) => {
     })
 }
 
-exports.deleteANote = async (req, res) => {
+exports.deleteANote = async (req, res, next) => {
     try {
         await Note.findOneAndDelete({ title: req.params.title });
 
@@ -51,6 +51,6 @@ exports.deleteANote = async (req, res) => {
         })
 
     } catch (err) {
-        console.log(err)
+        return next(new AppError('There was a problem deleting this note', 401));
     }
 }

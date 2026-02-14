@@ -15,6 +15,7 @@ router.post('/createnote',
 router.route('/:id')
     .get(noteController.getANote)
     .delete(authController.protect, noteController.deleteANote)
+    
 router.route('/delete-note/:title')
     .delete(authController.protect, noteController.deleteANote)
 

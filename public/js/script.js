@@ -68,9 +68,29 @@ const deleteNote = async (data) => {
         }
         
     } catch (err) {
-        console.log(err)
+        alert(`${err.response.data.message}`);
     }
 }
+
+const getNoteWithTitle = async (title) => {
+    try {
+        const res = await axios({
+            method: 'GET',
+            url: `http://127.0.0.1:8080/note/details/${title}`
+        })
+
+        console.log(res)
+
+        // window.location.reload(true);
+        // window.location.href = '/note/details';
+        // if (res.data == '') {
+        // }
+        
+    } catch (err) {
+        alert(`${err.response.data.message}`);
+    }
+}
+
 
 const logout = async () => {
     try {
@@ -132,14 +152,19 @@ createNoteForm.addEventListener('submit', (e) => {
 })
 
 readIcons.forEach(async (readIcon) => {
-    readIcon.addEventListener('click', (e) => {
+    readIcon.addEventListener('click', async (e) => {
         const note_detail = e.currentTarget.parentElement.parentElement.querySelector('.note-content').textContent;
         const title_detail = e.currentTarget.parentElement.parentElement.querySelector('.note-title').textContent;
         const date_detail = e.currentTarget.parentElement.parentElement.querySelector('.note-date').textContent;
-        noteDetailContainer.classList.add('bring-note-detail-container');
-        detailTitle.textContent = title_detail;
-        detailNote.textContent = note_detail;
-        detailDate.textContent = date_detail;
+
+        const title = `${e.currentTarget.parentElement.parentElement.querySelector('.note-title').textContent}`;
+        console.log(title)
+        getNoteWithTitle(title);
+
+        // noteDetailContainer.classList.add('bring-note-detail-container');
+        // detailTitle.textContent = noteResponse.data.data.note.title;
+        // detailNote.textContent = noteResponse.data.data.note.note;
+        // detailDate.textContent = noteResponse.data.data.note.date;
     })
 })
 
@@ -157,9 +182,9 @@ deleteIcons.forEach((deleteIcon) => {
     })
 })
 
-dirDetailBtn.addEventListener('click', () => {
-    noteDetailContainer.classList.remove('bring-note-detail-container');
-})
+// dirDetailBtn.addEventListener('click', () => {
+//     window.location.href = '/dashboaed'
+// })
 
 
 // ACCOUNT FUNCT

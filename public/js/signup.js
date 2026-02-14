@@ -43,11 +43,7 @@ const signup = async (data) => {
         signupBtn.textContent = 'Success';
         // showAlert(alertContainer);
 
-        console.log(res.data.status)
-        console.log(res)
-
     } catch (err) {
-        console.log(err.response.data);
         signupBtn.textContent = 'Sign up';
         errorDisplay.textContent = err.response.data.message;
     }
@@ -60,10 +56,8 @@ form.addEventListener('submit', (e) => {
     errorDisplay.textContent = '';
 
     const formData = new FormData(form);
-    let data = Object.fromEntries(formData.entries());
-    data.photo = formData.get('photo').name;
-    console.log(data)
-    console.log(formData.get('photo').name)
+    const data = Object.fromEntries(formData.entries());
 
     signup(data);
 })
+

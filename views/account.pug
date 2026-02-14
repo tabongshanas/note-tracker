@@ -1,6 +1,17 @@
-mixin userDetail(labelText, content)
+mixin userDetail(labelText, placeholder, type, inputName, inputClass)
     label= labelText
-        p.detail-content= content
+        if (type == 'password')
+            p.detail-content= placeholder
+        //- this is the problem why log in is not working
+        else if (inputName == 'gender')
+            select#select(name='gender' class=inputName)
+                option(value='') Gender  
+                option(value='male') Male  
+                option(value='female') Female  
+        else if (type !== 'password' || inputName !== 'gender')
+            //- input(type=`${type}` placeholder=`${placeholder}` name=`${name}` class=`${class}`).detail-content
+            input(type=type placeholder=placeholder name=inputName class=inputClass).detail-content
+            //- input(type='text') content
 
 doctype html
 html(lang="en")
@@ -11,22 +22,33 @@ html(lang="en")
     body 
 
         .body-container 
-            .user-profile 
-                img(src='/img/users/default-user.webp', alt='Profile')
+            .accout-home-btn home
 
-            .user-details-container 
-                .user-detail
-                    +userDetail('full name', user.fullname) 
-                    +userDetail('email', user.email) 
+            form.updateDataFrom(enctype='multipart/form-data')
+                .user-profile 
+                    img.user-uploaded-profile(src=`/img/users/${loggedInUser.photo}`, alt='User Profile')
+                    input#photo(type='file' hidden name='photo')
+                    label(for='photo').user-profile-btn select profile
 
-                .user-detail
-                    +userDetail('phone number', user.phonenumber) 
-                    +userDetail('password', "It's personal" ) 
+                .user-details-container 
+                    .user-detail
+                        +userDetail('full name', user.fullname, '', 'fullname', 'fullname') 
+                        +userDetail('email', user.email, '', 'email', 'email') 
 
-                .user-detail
-                    +userDetail('gender', user.gender) 
-                    +userDetail('purpose', user.purpose) 
-                    
+                    .user-detail
+                        +userDetail('phone number', user.phonenumber, '', 'phonenumber', 'phonenumber') 
+                        +userDetail('password', "It's personal", 'password') 
+
+                    .user-detail
+                        +userDetail('gender', user.gender, '', 'gender', 'gender') 
+                        +userDetail('purpose', user.purpose, '', 'purpose', 'purpose') 
+
+            
+                button(type='submit').updataBtn update
+
+                .info-container
+                    p You must not input all the fields to update your informations 😯
+                    em Just input the fields you want to update. 
 
     script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js') 
-    script(type='module' src='/js/script.js') 
+    script(type='module' src='/js/update.js') 

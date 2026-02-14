@@ -13,10 +13,45 @@
     flex-direction: $direction;
 }
 
+@mixin selectionStyle() {
+    #select {
+        padding: 7px 12px;
+        width: 100%;
+        outline: none;
+        caret-color: $primary-color;
+        font-family: $little-text-font;
+        font-size: 17px;
+        border-radius: 5px;
+        color: white;
+        background-color: rgba(255, 255, 255, 0.158);
+        cursor: pointer;
+        
+        option {
+            color: $primary-color;
+            cursor: pointer;
+        }
+
+        &::placeholder {
+            color: white;
+            font-size: 16px;
+        }
+
+        &:focus {
+            border: 2px solid $secondary-color;
+        }
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
 }
 
 
@@ -59,8 +94,8 @@
             margin-bottom: 40px;
 
             .user-uploaded-profile {
-                width: 100px;
-                height: 100px;
+                width: 200px;
+                height: 200px;
                 border-radius: 50%;
             }
 
@@ -126,32 +161,7 @@
                 width: 100%;
             }
 
-            #select {
-                padding: 7px 12px;
-                width: 100%;
-                outline: none;
-                caret-color: $primary-color;
-                font-family: $little-text-font;
-                font-size: 17px;
-                border-radius: 5px;
-                color: white;
-                background-color: rgba(255, 255, 255, 0.158);
-                cursor: pointer;
-                
-                option {
-                    color: $primary-color;
-                    cursor: pointer;
-                }
-
-                &::placeholder {
-                    color: white;
-                    font-size: 16px;
-                }
-
-                &:focus {
-                    border: 2px solid $secondary-color;
-                }
-            }
+            @include selectionStyle();
         } 
     }
 
@@ -334,12 +344,12 @@
             @include flexCenter();
             cursor: pointer;
 
-            img {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                // border: 1px solid orange;
-            }
+            // img {
+            //     width: 100px;
+            //     height: 100px;
+            //     border-radius: 50%;
+            //     // border: 1px solid orange;
+            // }
 
             .user-name--purpose {
                 margin-left: 10px;
@@ -508,6 +518,7 @@
 
                     .edit-icon {
                         transition: 0.2s;
+                        color: $secondary-color;
 
                         &:hover {
                             cursor: pointer;
@@ -517,6 +528,7 @@
                     .read-icon {
                         margin: 0 25px;
                         transition: 0.2s;
+                        color: $secondary-color;
                         
                         &:hover {
                             cursor: pointer;
@@ -525,6 +537,7 @@
                     }
                     .delete-icon {
                         transition: 0.2s;
+                        color: $secondary-color;
 
                         &:hover {
                             cursor: pointer;
@@ -593,14 +606,15 @@
                 font-family: $little-text-font;
                 font-weight: 800;
                 font-size: 17px;
-                background-color: rgba(255, 255, 255, 0.234);
-    
+                background-color: $primary-color;
+                // background-color: rgba(255, 255, 255, 0.173);
+                
                 &:focus {
-                    border: 2px solid $secondary-color;
+                    border: 1.5px solid $secondary-color;
                 }
-
+                
             }
-
+            
             textarea {
                 width: 100%;
                 height: 400px;
@@ -612,10 +626,11 @@
                 resize: none;
                 font-size: 15px;
                 border: 1px solid rgba(255, 255, 255, 0.389);
-                background-color: rgba(255, 255, 255, 0.234);
+                background-color: $primary-color;
+                // background-color: rgba(255, 255, 255, 0.234);
 
                 &:focus {
-                    border: 2px solid $secondary-color;
+                    border: 1.5px solid $secondary-color;
                 }
             }
 
@@ -768,19 +783,9 @@
 
 .note-detail-container {
     background-color: $primary-color;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    z-index: 4000000;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
 
     .detail-header {
-        margin-left: 50px;
+        padding: 20px 30px 20px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -791,7 +796,7 @@
         .user {
             color: $secondary-color;
             font-family: $little-text-font;
-            font-size: 30px;
+            font-size: 25px;
             font-weight: 800;
         }
         .purpose {
@@ -857,6 +862,52 @@
 }
 
 
+.updateDataFrom {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+
+   .updataBtn {
+    margin: 30px 10px 0 10px;
+    width: 100%;
+    background-color: $secondary-color;
+    color: $primary-color;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: $little-text-font;
+    // font: 800 16px $little-text-font;
+    text-transform: capitalize;
+    padding: 10px;
+    border-radius: 50px;
+    transition: 0.3s;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 80%;
+    }
+    
+   }
+
+    .user-profile-btn {
+        color: $primary-color;
+        background-color: $secondary-color;
+        padding: 5px;
+        font-weight: 700;
+        font-family: $text-font;
+        font-size: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-left: -30px;
+    }
+
+    .info-container {
+        margin-top: 20px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.33);
+        font-family: $little-text-font;
+        font-size: 15px;
+    }
+}
 
 .user-details-container {
 
@@ -873,17 +924,50 @@
             width: 500px;
             margin: 0 10px;
             padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+
+            @include selectionStyle();
+
+            .detail-content {
+                color: white;
+                font-weight: 800;
+                font-size: 14px;
+                font-family: $text-font;
+                padding: 6px 10px;
+                margin-left: 30px;
+                text-transform: lowercase;
+                margin-top: 15px;
+                background-color: rgba(255, 255, 255, 0.242);
+                outline: none;
+                caret-color: $secondary-color;
+
+                &::placeholder {
+                    color: white;
+                }
+            }
         }
 
-        .detail-content {
-            color: white;
-            font-weight: 800;
-            font-size: 16px;
-            font-family: $text-font;
-            padding-top: 5px;
-            margin-left: 30px;
-            text-transform: lowercase;
-        }
+    }
+}
+
+
+// FOR ACCOUNT SECTION
+.accout-home-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    text-transform: uppercase;
+    color: $secondary-color;
+    font-weight: 600;
+    font-family: $little-text-font;
+    text-decoration: underline;
+    transition: 0.5s;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 90%;
     }
 }
 

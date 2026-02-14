@@ -13,14 +13,16 @@ exports.protect = async (req, res, next) => {
     }
 
     if (!token) {
-        return next(new AppError('This route is protected, Please log in to access this route!', 401))
+        // return next(new AppError('This route is protected, Please log in to access this route!', 401))
+        return res.redirect('/login');
     }
 
     const decoded = await jwt.verify(token, process.env.JWT_SECRET_STRING);
     const decodedUser = await User.findById(decoded.id);
 
     if (!decodedUser) {
-        return next(new AppError('This user do not longer exist, Please sign up.', 404));
+        // return next(new AppError('This user do not longer exist, Please sign up.', 404));
+        res.redirect('/')
     }
     
     req.user = decodedUser;

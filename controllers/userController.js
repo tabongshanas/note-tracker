@@ -1,6 +1,4 @@
 const jwt = require('jsonwebtoken');
-const multer = require('multer');
-const path = require('path');
 
 const User = require('./../models/userModel');
 const AppError = require('./../utility/AppError');
@@ -23,24 +21,9 @@ const sendCookie = (res, token) => {
     });
 }
 
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, path.join(__dirname, 'public/img/users'))
-//     },
-//     filename: (req, file, cb) => {
-//         const ext = file.mimetype.split('/')[1];
-//         cb(null, `user-${new Date()}.${ext}`)
-//     }
-// })
-
-// const upload = multer({ storage });
-
-// exports.uploadImage = upload;
-
 exports.signup = async (req, res, next) => {
     try {
-        console.log({ ...req.body })
-        console.log(req.file)
+        // console.log({ ...req.body })
 
         const checkUser = await User.findOne({ email: req.body.email })
         if (checkUser) {
@@ -64,27 +47,25 @@ exports.signup = async (req, res, next) => {
         })
 
     } catch (err) {
-        console.log(err)
         return next(new AppError('Please, all fields are required or Network issue, TRY again later.', 400))
     }
 }
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(401).json({
-            status: 'fail',
-            message: 'Please provide your email and password, Invalid email or password'
-        })
+        return next(new AppError('Please provide your email and password, Invalid email or password', 400));
     }
 
     const user = await User.findOne({ email });
-    if (!user || !(await user.compareUserPassword(password))) {
-        return res.status(404).json({
-            status: 'fail',
-            message: 'Sorry invalid input or, Invalid email or password'
-        })
+    if (!user) {
+        return next(new AppError('This user does not exist, Please try another email.', 404));
+    }
+
+    const isMatch = await user.compareUserPassword(password);
+    if (!isMatch) {
+        return next(new AppError('Sorry, your password is incorrect', 400));
     }
 
     const token = await signjwt(user._id);
@@ -95,8 +76,6 @@ exports.login = async (req, res) => {
         status: 'success',
         token
     })
-
-    // console.log(await user.compareUserPassword(password))
 }
 
 exports.logout = async (req, res, next) => {

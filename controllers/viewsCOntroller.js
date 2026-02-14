@@ -1,5 +1,7 @@
 
+const AppError = require('../utility/AppError');
 const Note = require('./../models/noteModule');
+
 
 exports.signup = (req, res) => {
     res.status(200).render('base', {
@@ -39,7 +41,44 @@ exports.overview = async (req, res) => {
 }
 
 exports.account = async (req, res) => {
+    const loggedInUser = req.user;
+
     res.status(200).render('account', {
         title: 'User Account Details || Note Tracker 😎',
+        loggedInUser
     });
+}
+
+exports.updateMe = async (req, res, next) => {
+    if (req.file) {
+        req.user.photo = req.file.filename;
+    }
+
+    if (req.body.fullname) req.user.fullname = req.body.fullname;
+    if (req.body.email) req.user.email = req.body.email;
+    if (req.body.phonenumber) req.user.phonenumber = req.body.phonenumber;
+    if (req.body.gender) req.user.gender = req.body.gender;
+    if (req.body.purpose) req.user.purpose = req.body.purpose;
+
+    await req.user.save();
+
+    res.status(200).json({
+        status: 'success',
+        data: {  }
+    });
+}
+
+
+exports.getANoteByTitle = async (req, res, next) => {
+    const loggedInUser = req.user;
+
+    res.status(200).render('note-details', {
+        title: 'Note details || Note Tracker 😎',
+        loggedInUser
+    })
+    // try {
+        
+    // } catch (err) {
+    //     return next(new AppError('There was a problem fetching this note.', 400));
+    // }
 }
